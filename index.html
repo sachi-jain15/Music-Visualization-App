@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Songify</title>
+<!-- the code to add css -->
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">  <!--font awesome added to the website -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"> <!-- DataTables jQuery Plugin cdn added here -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+</head>
+
+<body>
+    <div class="wrapper">
+      <!--this is the welcome screen for songify(cover)-->
+        <section class="welcome-screen " >  <!-- remove hidden -->
+        <header>
+            <div id="heading" ><p> <strong>Welcome to World of Music </strong></p></div></header>
+        <div class="input-wrapper">
+        <div class="container">
+            <div class="col-6" id="right">
+            <h2 style="text-align: center; padding: 0;margin: 0;font-family: Matura MT Script Capitals;">To get access of the top rated music app... <br> Please login.</h2>
+                  <!--Added a login form   -->
+                <div class="form">
+                <form id="loginform" name="loginform" method="post">
+                <table>
+                <tr>
+                <td><input type="text" placeholder="First Name" id="name-input" size='35'><span id="usernameError"></span> </td><td><input type="name" placeholder="Last Name" size='35' required></td></tr><br>
+                <tr>
+                <td style="text-align: center;color:white;font-size: 20px;">Email-id: </td>
+                <td><input type="text" placeholder="test@acadview.com" id="email-input" required="" size='35'><span id="emailError"></span></td></tr><br>
+                <tr>
+                <td style="text-align: center;color:white;font-size: 20px;">Password: </td>
+                <td><input type="password" placeholder="JavascriptRocks" id="password-input" required="" size='35'><span id="passwordError"></span></td></tr><br>
+                </table>
+                </form></div>
+                <button style="background-color: lightblue; border-radius: 10px;width: 100px;height: 30px;">Log In </button>
+                <h3></h3>
+            </div>
+            <div class="col-6" id="left">
+              <!-- About Songify -->
+                <p ><strong>Welcome to Songify, enjoy the latest trending music available now.
+                <br>Instant access to Top rated songs<br>Listen to your favorite Music.
+                </strong></p>
+            </div>
+        </div>
+        </div>
+        </section>
+        <div class="main hidden">  <!-- add hidden -->
+            <header>
+                <div class="right floated user-name"> </div>
+            </header>
+            <section class="content">
+              <!-- Audio tag added here -->
+                <audio id="audioElement" src="song.mp3"></audio>
+                <table id="songs">
+    <thead class="list-headers">
+            <tr><td> Title </td>
+            <td> Artist </td>
+            <td> Album </td>
+            <td> Duration </td>
+        </tr></thead>
+        <!-- <div class="song-list"> -->
+            <tbody><tr class="song" id="song1">
+                <td class="song-name"></td>
+                <td class="song-artist"></td>
+                <td class="song-album"></td>
+                <td class="song-length"></td>
+            </tr>
+            <tr class="song" id="song2">
+                <td class="song-name"></td>
+                <td class="song-artist"></td>
+                <td class="song-album"></td>
+                <td class="song-length"></td>
+            </tr>
+            <tr class="song" id="song3">
+                <td class="song-name"></td>
+                <td class="song-artist"></td>
+                <td class="song-album"></td>
+                <td class="song-length"></td>
+            </tr>
+            <tr class="song" id="song4">
+                <td class="song-name"></td>
+                <td class="song-artist"></td>
+                <td class="song-album"></td>
+                <td class="song-length"></td>
+            </tr>
+
+        <!-- </div> -->
+    </tbody></table>
+    <!--total songs in the playlist  -->
+    <div>
+    <p id="totalSongs" style="color: tomato;"></p>
+    </div>
+    <!-- to display current playing song, album and artist -->
+                <div class="current-song-wrapper">
+                    <img src="" class="current-song-image" style="margin-left: 10px;margin-bottom: 10px">
+                    <div>
+                        <strong><p class="current-song-name" style="color: teal;"></p></strong><hr>
+                        <p class="current-song-artist" style="color: darkkhaki;"></p>
+                        <p class="current-song-album" style="color: seagreen;"></p>
+                    </div>
+                </div>
+            </section>
+            <footer>
+              <!-- to add song control icons -->
+                <div class="controls">
+                    <div class="player-buttons"><!--  icon of playing a song -->
+                        <i class="fa fa-random clickable disabled" aria-hidden="true"></i> <!--  icon to choose any random song -->
+                        <i class="fa fa-step-backward clickable" aria-hidden="true"></i><!--  icon to play a song from beginning -->
+                        <i class="fa fa-play clickable play-icon" aria-hidden="true"></i><!--  icon for playing/pausing a song -->
+                        <i class="fa fa-step-forward clickable" aria-hidden="true"></i><!--  icon to play next song -->
+                        <i class="fa fa-repeat disabled clickable" aria-hidden="true"></i> <!--  icon to repeat song -->
+                        <span class="volume fa fa-volume-up" ></span> <!-- icon to mute and unmute the currently playing song -->
+                      <div id="volume-slider">                       <!--  volume slider that will help to  adjust the volume of the songs using volume slider -->
+                          <div id="volume-filled"></div> <!--  icon of to fill the volume in the bar -->
+                      </div>
+                    </div>
+                    <!-- progress bar for music -->
+                    <div class="progress-wrapper">
+                        <span class="time-elapsed"> </span>
+                        <div class="player-progress">
+                            <div class="progress-filled"> </div>
+                        </div>
+                        <span class="song-duration"></span> <!--  to display duration of the song -->
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <!-- javascript code added here -->
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script> <!-- to add visualization to our code -->
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script> <!-- to add visualization to our code -->
+    <script src="js/jquery.js"> //Add jQuery to your website
+    </script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"> //Use the DataTables jQuery Plugin to add search and sort functionality
+    </script>
+    <script src="js/main.js"> //All the javascript in main.js file and linked here.
+    </script>
+</body>
+
+</html>
